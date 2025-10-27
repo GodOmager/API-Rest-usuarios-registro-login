@@ -47,7 +47,7 @@ export const login = async (req, res) => {
     if (!rows[0]) { return res.json({ message: "Credenciales invalidas" }) }
 
     //si existe, comparo contraseñas
-    const valid = await bcrypt.compare(Pass, rows.Pass)
+    const valid = await bcrypt.compare(Pass, rows[0].Pass)
     if (!valid) {
         return res.status(401).json({ message: "Credenciales invalidas" })
     }
